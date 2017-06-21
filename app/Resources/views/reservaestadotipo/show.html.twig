@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservaestadotipo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservaEstadoTipo.id }}</td>
+            </tr>
+            <tr>
+                <th>Reservaestadotipo</th>
+                <td>{{ reservaEstadoTipo.reservaEstadoTipo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservaestadotipo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reservaestadotipo_edit', { 'id': reservaEstadoTipo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

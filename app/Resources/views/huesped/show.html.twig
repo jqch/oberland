@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Huesped</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ huesped.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ huesped.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ huesped.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Documentoexpiracion</th>
+                <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ huesped.region }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad</th>
+                <td>{{ huesped.ciudad }}</td>
+            </tr>
+            <tr>
+                <th>Residencia</th>
+                <td>{{ huesped.residencia }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ huesped.numero }}</td>
+            </tr>
+            <tr>
+                <th>Codigopostal</th>
+                <td>{{ huesped.codigoPostal }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ huesped.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ huesped.celular }}</td>
+            </tr>
+            <tr>
+                <th>Telefonoreferencia</th>
+                <td>{{ huesped.telefonoReferencia }}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{ huesped.fax }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ huesped.email }}</td>
+            </tr>
+            <tr>
+                <th>Fotografia</th>
+                <td>{{ huesped.fotografia }}</td>
+            </tr>
+            <tr>
+                <th>Obs</th>
+                <td>{{ huesped.obs }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('huesped_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

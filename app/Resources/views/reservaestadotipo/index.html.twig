@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservaestadotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reservaestadotipo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservaEstadoTipo in reservaEstadoTipos %}
+            <tr>
+                <td><a href="{{ path('reservaestadotipo_show', { 'id': reservaEstadoTipo.id }) }}">{{ reservaEstadoTipo.id }}</a></td>
+                <td>{{ reservaEstadoTipo.reservaEstadoTipo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservaestadotipo_show', { 'id': reservaEstadoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservaestadotipo_edit', { 'id': reservaEstadoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservaestadotipo_new') }}">Create a new reservaEstadoTipo</a>
+        </li>
+    </ul>
+{% endblock %}

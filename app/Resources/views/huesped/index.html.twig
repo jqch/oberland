@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Huespeds list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fechanacimiento</th>
+                <th>Documentoexpiracion</th>
+                <th>Region</th>
+                <th>Ciudad</th>
+                <th>Residencia</th>
+                <th>Numero</th>
+                <th>Codigopostal</th>
+                <th>Telefono</th>
+                <th>Celular</th>
+                <th>Telefonoreferencia</th>
+                <th>Fax</th>
+                <th>Email</th>
+                <th>Fotografia</th>
+                <th>Obs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for huesped in huespeds %}
+            <tr>
+                <td><a href="{{ path('huesped_show', { 'id': huesped.id }) }}">{{ huesped.id }}</a></td>
+                <td>{{ huesped.nombre }}</td>
+                <td>{{ huesped.apellidos }}</td>
+                <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ huesped.region }}</td>
+                <td>{{ huesped.ciudad }}</td>
+                <td>{{ huesped.residencia }}</td>
+                <td>{{ huesped.numero }}</td>
+                <td>{{ huesped.codigoPostal }}</td>
+                <td>{{ huesped.telefono }}</td>
+                <td>{{ huesped.celular }}</td>
+                <td>{{ huesped.telefonoReferencia }}</td>
+                <td>{{ huesped.fax }}</td>
+                <td>{{ huesped.email }}</td>
+                <td>{{ huesped.fotografia }}</td>
+                <td>{{ huesped.obs }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('huesped_show', { 'id': huesped.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('huesped_new') }}">Create a new huesped</a>
+        </li>
+    </ul>
+{% endblock %}

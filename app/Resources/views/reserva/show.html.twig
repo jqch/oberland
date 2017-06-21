@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reserva</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reserva.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechaingreso</th>
+                <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechasalida</th>
+                <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horarioentradaestimado</th>
+                <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistro</th>
+                <td>{% if reserva.fechaRegistro %}{{ reserva.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horaregistro</th>
+                <td>{% if reserva.horaRegistro %}{{ reserva.horaRegistro|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Obs</th>
+                <td>{{ reserva.obs }}</td>
+            </tr>
+            <tr>
+                <th>Precioactual</th>
+                <td>{{ reserva.precioActual }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reserva_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

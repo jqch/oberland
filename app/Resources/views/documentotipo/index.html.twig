@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Documentotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Documento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentoTipo in documentoTipos %}
+            <tr>
+                <td><a href="{{ path('documentotipo_show', { 'id': documentoTipo.id }) }}">{{ documentoTipo.id }}</a></td>
+                <td>{{ documentoTipo.documento }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('documentotipo_show', { 'id': documentoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('documentotipo_edit', { 'id': documentoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('documentotipo_new') }}">Create a new documentoTipo</a>
+        </li>
+    </ul>
+{% endblock %}

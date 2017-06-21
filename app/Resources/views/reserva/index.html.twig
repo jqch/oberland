@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservas list</h1>
+
+    <table class="table table-inverse">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fechaingreso</th>
+                <th>Fechasalida</th>
+                <th>Horarioentradaestimado</th>
+                <th>Fecharegistro</th>
+                <th>Horaregistro</th>
+                <th>Obs</th>
+                <th>Precioactual</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserva in reservas %}
+            <tr>
+                <td><a href="{{ path('reserva_show', { 'id': reserva.id }) }}">{{ reserva.id }}</a></td>
+                <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
+                <td>{% if reserva.fechaRegistro %}{{ reserva.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reserva.horaRegistro %}{{ reserva.horaRegistro|date('H:i:s') }}{% endif %}</td>
+                <td>{{ reserva.obs }}</td>
+                <td>{{ reserva.precioActual }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reserva_show', { 'id': reserva.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reserva_new') }}">Create a new reserva</a>
+        </li>
+    </ul>
+{% endblock %}

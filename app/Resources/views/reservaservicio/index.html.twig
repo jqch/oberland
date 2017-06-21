@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservaservicios list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecharegistro</th>
+                <th>Horaregistro</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservaServicio in reservaServicios %}
+            <tr>
+                <td><a href="{{ path('reservaservicio_show', { 'id': reservaServicio.id }) }}">{{ reservaServicio.id }}</a></td>
+                <td>{% if reservaServicio.fechaRegistro %}{{ reservaServicio.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reservaServicio.horaRegistro %}{{ reservaServicio.horaRegistro|date('H:i:s') }}{% endif %}</td>
+                <td>{{ reservaServicio.monto }}</td>
+                <td>{{ reservaServicio.saldo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservaservicio_show', { 'id': reservaServicio.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservaservicio_edit', { 'id': reservaServicio.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservaservicio_new') }}">Create a new reservaServicio</a>
+        </li>
+    </ul>
+{% endblock %}

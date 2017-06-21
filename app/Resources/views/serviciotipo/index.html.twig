@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Serviciotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Servicio</th>
+                <th>Precio</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for servicioTipo in servicioTipos %}
+            <tr>
+                <td><a href="{{ path('serviciotipo_show', { 'id': servicioTipo.id }) }}">{{ servicioTipo.id }}</a></td>
+                <td>{{ servicioTipo.servicio }}</td>
+                <td>{{ servicioTipo.precio }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('serviciotipo_show', { 'id': servicioTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('serviciotipo_edit', { 'id': servicioTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('serviciotipo_new') }}">Create a new servicioTipo</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservaservicio</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservaServicio.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistro</th>
+                <td>{% if reservaServicio.fechaRegistro %}{{ reservaServicio.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Horaregistro</th>
+                <td>{% if reservaServicio.horaRegistro %}{{ reservaServicio.horaRegistro|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Monto</th>
+                <td>{{ reservaServicio.monto }}</td>
+            </tr>
+            <tr>
+                <th>Saldo</th>
+                <td>{{ reservaServicio.saldo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservaservicio_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reservaservicio_edit', { 'id': reservaServicio.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

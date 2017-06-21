@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Residenciatipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Residencia</th>
+                <th>Abrev</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for residenciaTipo in residenciaTipos %}
+            <tr>
+                <td><a href="{{ path('residenciatipo_show', { 'id': residenciaTipo.id }) }}">{{ residenciaTipo.id }}</a></td>
+                <td>{{ residenciaTipo.residencia }}</td>
+                <td>{{ residenciaTipo.abrev }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('residenciatipo_show', { 'id': residenciaTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('residenciatipo_edit', { 'id': residenciaTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('residenciatipo_new') }}">Create a new residenciaTipo</a>
+        </li>
+    </ul>
+{% endblock %}

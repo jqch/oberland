@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Habitaciontipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Habitaciontipo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for habitacionTipo in habitacionTipos %}
+            <tr>
+                <td><a href="{{ path('habitaciontipo_show', { 'id': habitacionTipo.id }) }}">{{ habitacionTipo.id }}</a></td>
+                <td>{{ habitacionTipo.habitacionTipo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('habitaciontipo_show', { 'id': habitacionTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('habitaciontipo_edit', { 'id': habitacionTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('habitaciontipo_new') }}">Create a new habitacionTipo</a>
+        </li>
+    </ul>
+{% endblock %}

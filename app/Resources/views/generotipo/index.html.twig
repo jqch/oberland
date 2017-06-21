@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Generotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Genero</th>
+                <th>Detalle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for generoTipo in generoTipos %}
+            <tr>
+                <td><a href="{{ path('generotipo_show', { 'id': generoTipo.id }) }}">{{ generoTipo.id }}</a></td>
+                <td>{{ generoTipo.genero }}</td>
+                <td>{{ generoTipo.detalle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('generotipo_show', { 'id': generoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('generotipo_edit', { 'id': generoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('generotipo_new') }}">Create a new generoTipo</a>
+        </li>
+    </ul>
+{% endblock %}

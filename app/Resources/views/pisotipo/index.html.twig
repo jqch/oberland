@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pisotipos list</h1>
+    <table class="table table-inverse">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Piso</th>
+                <th>Detalle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pisoTipo in pisoTipos %}
+            <tr>
+                <td><a href="{{ path('pisotipo_show', { 'id': pisoTipo.id }) }}">{{ pisoTipo.id }}</a></td>
+                <td>{{ pisoTipo.piso }}</td>
+                <td>{{ pisoTipo.detalle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pisotipo_show', { 'id': pisoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pisotipo_edit', { 'id': pisoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pisotipo_new') }}">Create a new pisoTipo</a>
+        </li>
+    </ul>
+{% endblock %}
