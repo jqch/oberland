@@ -1,6 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <style media="screen">
+        .embed-container{
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .embed-container object{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
     <h1>Habitacions list</h1>
 
     <table class="table table-bordered">
@@ -44,6 +60,11 @@
             <a href="{{ path('habitacion_new') }}">Create a new habitacion</a>
         </li>
     </ul>
+    <div class="embed-container">
+        <object type="text/html" data="{{path('reserva_new')}}">
+
+        </object>
+    </div>
 
 {% endblock %}
 {% block javascripts %}
