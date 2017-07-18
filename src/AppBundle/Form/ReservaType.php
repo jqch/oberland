@@ -22,7 +22,7 @@ class ReservaType extends AbstractType
         ->add('obs')
         ->add('precioActual')
         ->add('habitacion')
-        ->add('huesped','AppBundle\Form\HuespedType')
+        //->add('huesped','AppBundle\Form\HuespedType')
         ->add('reservaEstadoTipo');
 
         //->add('usuario');

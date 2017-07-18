@@ -44,6 +44,13 @@ class HuespedController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $file = $huesped->getFotografia();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move('uploads/huesped-foto', $fileName);
+
+            $huesped->setFotografia($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($huesped);
             $em->flush();

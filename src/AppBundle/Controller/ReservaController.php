@@ -32,6 +32,16 @@ class ReservaController extends Controller
     }
 
     /**
+     * @Route("/buscarHuesped", name="reserva_buscarHuesped")
+     * @Method({"POST"})
+     */
+    public function searchAction(Request $request){
+        dump($request->get('id'));
+        die;
+        return 0;
+    }
+
+    /**
      * Creates a new reserva entity.
      *
      * @Route("/new", name="reserva_new")
@@ -45,6 +55,7 @@ class ReservaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $reserva->setHuesped($em->getRepository('AppBundle:Huesped')->find());
             $em->persist($reserva);
             $em->flush();
 

@@ -42,6 +42,14 @@ class Huesped
      */
     private $fechaNacimiento;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="documento", type="string", length=50, nullable=true)
+     */
+    private $documento;
+
     /**
      * @var \DateTime
      *
@@ -277,6 +285,30 @@ class Huesped
     public function getFechaNacimiento()
     {
         return $this->fechaNacimiento;
+    }
+
+    /**
+     * Set documento
+     *
+     * @param string $documento
+     *
+     * @return Huesped
+     */
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
+
+        return $this;
+    }
+
+    /**
+     * Get documento
+     *
+     * @return string
+     */
+    public function getDocumento()
+    {
+        return $this->documento;
     }
 
     /**

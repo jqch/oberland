@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
 
-    <body data-ma-theme="teal">
+    <body data-ma-theme="blue">
         <main class="main">
             <div class="page-loader">
                 <div class="page-loader__spinner">
@@ -366,17 +366,26 @@
 
                     <ul class="navigation">
                         <li class="navigation__active"><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
-                        <li class="" id="menu_habitacion"><a href="{{path('habitacion_index')}}"><i class="zmdi zmdi-home"></i> Habitación</a></li>
-                        <li class="" id="menu_reserva"><a href="{{path('reserva_index')}}"><i class="zmdi zmdi-home"></i> Reserva</a></li>
+                        <li class=""><a href="{{path('huesped_index')}}"><i class="zmdi zmdi-account"></i> Huesped</a></li>
+                        <li class="" id="menu_reserva"><a href="{{path('reserva_index')}}"><i class="zmdi zmdi-file"></i> Reservas</a></li>
+                        <li class="" id="menu_reserva"><a href="{{path('pago_index')}}"><i class="zmdi zmdi-money"></i> Pagos</a></li>
+                        <li class="" id="menu_reserva"><a href=""><i class="zmdi zmdi-search"></i> Consultas</a></li>
 
                         <li class="navigation__sub @@variantsactive">
-                            <a href=""><i class="zmdi zmdi-view-week"></i> Variants</a>
+                            <a href=""><i class="zmdi zmdi-view-week"></i> Configuración</a>
 
                             <ul>
-                                <li class="@@sidebaractive"><a href="hidden-sidebar.html">Hidden Sidebar</a></li>
-                                <li class="@@boxedactive"><a href="boxed-layout.html">Boxed Layout</a></li>
-                                <li class="@@hiddensidebarboxedactive"><a href="hidden-sidebar-boxed-layout.html">Boxed Layout with Hidden Sidebar</a></li>
-                                <li class="@@topnavigationactive"><a href="top-navigation.html">Top Navigation</a></li>
+                                <li class="@@sidebaractive" id="menu_habitacion"><a href="{{path('habitacion_index')}}">Habitación</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('habitaciontipo_index')}}">Tipos de Habitación</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('estadotipo_index')}}">Estados de habitacion</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('documentotipo_index')}}">Documentos</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('generotipo_index')}}">Género</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('pagotipo_index')}}">Tipos de pagos</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('paistipo_index')}}">Pais</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('pisotipo_index')}}">Numero de pisos</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('reservaestadotipo_index')}}">Estados de reserva</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('residenciatipo_index')}}">Tipos de residencia</a></li>
+                                <li class="@@sidebaractive"><a href="{{path('serviciotipo_index')}}">Servicios</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -507,6 +516,9 @@
 
             <!-- App functions and actions -->
             <script src="{{asset('js/app.min.js')}}"></script>
+
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
         {% endblock %}
     </body>
