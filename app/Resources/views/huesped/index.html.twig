@@ -11,7 +11,7 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fechanacimiento</th>
-                    <th>Documentoexpiracion</th>                    
+                    <th>Documentoexpiracion</th>
                     <th>Telefono</th>
                     <th>Celular</th>
                     <th>Email</th>
@@ -22,7 +22,7 @@
             {% for huesped in huespeds %}
                 <tr>
                     <td><a href="{{ path('huesped_show', { 'id': huesped.id }) }}">{{ huesped.id }}</a></td>
-                    <td><img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="30px" width="auto"></td>
+                    <td><img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="70px" width="auto"></td>
                     <td>{{ huesped.nombre }}</td>
                     <td>{{ huesped.apellidos }}</td>
                     <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>

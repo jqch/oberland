@@ -6,6 +6,7 @@ use AppBundle\Entity\Huesped;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Huesped controller.
@@ -44,7 +45,7 @@ class HuespedController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $file = $huesped->getFotografia();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             $file->move('uploads/huesped-foto', $fileName);
@@ -89,6 +90,7 @@ class HuespedController extends Controller
     public function editAction(Request $request, Huesped $huesped)
     {
         $deleteForm = $this->createDeleteForm($huesped);
+        //$huesped->setFotografia(null);
         $editForm = $this->createForm('AppBundle\Form\HuespedType', $huesped);
         $editForm->handleRequest($request);
 

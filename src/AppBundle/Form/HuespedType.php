@@ -30,7 +30,11 @@ class HuespedType extends AbstractType
             ->add('telefonoReferencia')
             ->add('fax')
             ->add('email')
-            ->add('fotografia', FileType::class)
+            ->add('fotografia', FileType::class, array(
+                    'data_class'=> null,
+                    'property_path' => 'fotografia'
+                )
+            )
             ->add('obs')
             ->add('documentoTipo')
             ->add('generoTipo')
@@ -39,7 +43,7 @@ class HuespedType extends AbstractType
             ->add('pais')
             ->add('residenciaTipo');
     }
-    
+
     /**
      * {@inheritdoc}
      */
