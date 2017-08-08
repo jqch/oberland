@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Huesped controller.
@@ -141,5 +142,30 @@ class HuespedController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Buscar huesped
+     *
+     * @Route("find/documento/{documento}", options={"expose"=true}, name="huesped_find_documento")
+     * @Method("GET")
+     */
+    public function findDocumentoAction($documento)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $huesped = $em->getRepository('AppBundle:Huesped')->findOneBy(array('documento'=>$documento));
+            if(!$huesped){
+                $huesped = null;
+            }
+            $response = new JsonResponse();
+            $response->setStatusCode(200);
+            $response->setData(array(
+                'huesped'=>$huesped
+            ));
+            return $response;
+        } catch (Exception $e) {
+
+        }
     }
 }

@@ -1,0 +1,17 @@
+{% if huesped is not null %}
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia)}}" width="200px" height="auto">
+		</div>
+		<div class="col-md-6">
+			<p>Nombre y Apellidos</p>
+			<p><b>{{huesped.nombre}} {{huesped.apellidos}}</b></p>
+			<p>Teléfono/Celular</p>
+			<p><b>{{huesped.telefono}} {{huesped.celular}}</b></p>
+		</div>
+	</div>
+{% else %}
+	<div class="alert alert-info">
+		<i class="zmdi zmdi-info"></i> Huesped no encontrado.
+	</div>
+{% endif %}

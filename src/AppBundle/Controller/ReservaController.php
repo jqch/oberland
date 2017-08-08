@@ -144,4 +144,26 @@ class ReservaController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Buscar huesped
+     *
+     * @Route("reserva/huesped/find/documento/{documento}", options={"expose"=true}, name="reserva_huesped_find_documento")
+     * @Method("GET")
+     */
+    public function huespedFindDocumentoAction($documento)
+    {
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $huesped = $em->getRepository('AppBundle:Huesped')->findOneBy(array('documento'=>$documento));
+            if(!$huesped){
+                $huesped = null;
+            }
+            return $this->render('reserva/huesped.html.twig', array(
+                'huesped'=>$huesped
+            ));
+        } catch (Exception $e) {
+
+        }
+    }
 }
