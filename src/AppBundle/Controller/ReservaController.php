@@ -55,7 +55,10 @@ class ReservaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $reserva->setHuesped($em->getRepository('AppBundle:Huesped')->find());
+            $idHuesped = $request->get('idHuesped');
+            $reserva->setHuesped($em->getRepository('AppBundle:Huesped')->find($idHuesped));
+            $reserva->setFechaRegistro(new \DateTime('now'));
+            $reserva->setHoraRegistro(new \DateTime('now'));
             $em->persist($reserva);
             $em->flush();
 

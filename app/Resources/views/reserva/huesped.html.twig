@@ -4,14 +4,20 @@
 			<img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia)}}" width="200px" height="auto">
 		</div>
 		<div class="col-md-6">
-			<p>Nombre y Apellidos</p>
+			<label>Documento</label>
+			<p><b>{{huesped.documento}}</b></p>
+			<label>Nombre y Apellidos</label>
 			<p><b>{{huesped.nombre}} {{huesped.apellidos}}</b></p>
-			<p>Teléfono/Celular</p>
-			<p><b>{{huesped.telefono}} {{huesped.celular}}</b></p>
+			<label>Teléfono/Celular</label>
+			<p><b>{{huesped.telefono}} / {{huesped.celular}}</b></p>
+			<button onclick="reservar({{huesped.id}});" class="btn btn-info">Programar reserva</button>
 		</div>
+
 	</div>
 {% else %}
-	<div class="alert alert-info">
+	<div class="alert" style="background: #EEE8E8">
 		<i class="zmdi zmdi-info"></i> Huesped no encontrado.
+		<br>
+		Ir a <a href="{{path('huesped_new')}}" class="btn-link"> Registrar huesped. </a>
 	</div>
 {% endif %}

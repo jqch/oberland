@@ -15,10 +15,11 @@
             <br>
             <div id="datosHuesped" style="padding: 10px"></div>
         </div>
-        <div class="col-md-6" id="divReserva">
+        <div class="col-md-6" id="divReserva" style="display:none">
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <input type="submit" value="Create" />
+                <input type="hidden" name="idHuesped" id="idHuesped">
+                <input type="submit" id="btnGuardar" value="Create" />
             {{ form_end(form) }}
         </div>
     </div>
@@ -50,6 +51,11 @@
 
                 }
             });
+        }
+
+        var reservar = function(idHuesped){
+            $('#idHuesped').val(idHuesped);
+            $('#divReserva').css('display','block');
         }
     </script>
 {% endblock %}
