@@ -365,7 +365,7 @@
                     </div>
 
                     <ul class="navigation">
-                        <li class="navigation__active"><a href="index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                        <li class="navigation__active"><a href="{{path('principal')}}"><i class="zmdi zmdi-home"></i> Home</a></li>
                         <li class=""><a href="{{path('huesped_index')}}"><i class="zmdi zmdi-account"></i> Huesped</a></li>
                         <li class="" id="menu_reserva"><a href="{{path('reserva_index')}}"><i class="zmdi zmdi-file"></i> Reservas</a></li>
                         <li class="" id="menu_reserva"><a href="{{path('pago_index')}}"><i class="zmdi zmdi-money"></i> Pagos</a></li>
@@ -506,6 +506,12 @@
             <script src="{{asset('vendors/bower_components/salvattore/dist/salvattore.min.js')}}"></script>
             <script src="{{asset('vendors/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
             <script src="{{asset('vendors/bower_components/moment/min/moment.min.js')}}"></script>
+
+            <script src="{{asset('vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+            <script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+            <script src="{{asset('vendors/bower_components/jszip/dist/jszip.min.js')}}"></script>
+            <script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
 
             <!-- Charts and maps-->
             <script src="{{asset('demo/js/flot-charts/curved-line.js')}}"></script>

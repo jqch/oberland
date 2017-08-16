@@ -1,92 +1,140 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Huesped</h1>
+    <style type="text/css">
+        th{
+            text-align: right;
+        }
+        p{
+            font-weight: bold;
+        }
+    </style>
+    <header class="content__title">
+        <h1>Datos Huesped</h1>
+        <div class="actions">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ huesped.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ huesped.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Apellidos</th>
-                <td>{{ huesped.apellidos }}</td>
-            </tr>
-            <tr>
-                <th>Fechanacimiento</th>
-                <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Documentoexpiracion</th>
-                <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ huesped.region }}</td>
-            </tr>
-            <tr>
-                <th>Ciudad</th>
-                <td>{{ huesped.ciudad }}</td>
-            </tr>
-            <tr>
-                <th>Residencia</th>
-                <td>{{ huesped.residencia }}</td>
-            </tr>
-            <tr>
-                <th>Numero</th>
-                <td>{{ huesped.numero }}</td>
-            </tr>
-            <tr>
-                <th>Codigopostal</th>
-                <td>{{ huesped.codigoPostal }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ huesped.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Celular</th>
-                <td>{{ huesped.celular }}</td>
-            </tr>
-            <tr>
-                <th>Telefonoreferencia</th>
-                <td>{{ huesped.telefonoReferencia }}</td>
-            </tr>
-            <tr>
-                <th>Fax</th>
-                <td>{{ huesped.fax }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ huesped.email }}</td>
-            </tr>
-            <tr>
-                <th>Fotografia</th>
-                <td><img src="{{ asset('uploads/huesped-foto/' ~ huesped.fotografia) }}" height="150px" width="auto" /></td>
-            </tr>
-            <tr>
-                <th>Obs</th>
-                <td>{{ huesped.obs }}</td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <h6>Datos personales</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Nombre</label>
+                    <p>{{huesped.nombre}}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Apellidos</label>
+                    <p>{{huesped.apellidos}}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Fecha de nacimiento</label>
+                    <p> {% if huesped.fechaNacimiento %} {{huesped.fechaNacimiento|date('d-m-Y')}} {% endif %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Género</label>
+                    <p>{% if huesped.generoTipo %} {{huesped.generoTipo.genero}} {% endif %}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Pais Nacionalidad</label>
+                    <p>{% if huesped.paisNacionalidad %} {{huesped.paisNacionalidad.pais}} {% endif %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Documento Tipo</label>
+                    <p>{% if huesped.documentoTipo %} {{huesped.documentoTipo.documento}} {% endif %}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Documento</label>
+                    <p>{{huesped.documento}}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Documento Expiracion</label>
+                    <p>{{huesped.documentoExpiracion|date('d-m-Y')}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>Teléfono</label>
+                    <p>{{huesped.telefono}}</p>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Celular</label>
+                    <p>{{huesped.celular}}</p>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Teléfono de Referencia</label>
+                    <p>{{huesped.telefonoReferencia}}</p>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Email</label>
+                    <p>{{huesped.email}}</p>
+                </div>
+            </div>
+            <h6>Datos referenciales</h6>
+            <hr>
 
-    <ul>
-        <li>
-            <a href="{{ path('huesped_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Pais</label>
+                    <p>{% if huesped.pais %} {{huesped.pais.pais}} {% endif %}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Ciudad</label>
+                    <p>{{huesped.ciudad}}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Región</label>
+                    <p>{{huesped.region}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Residencia Tipo</label>
+                    <p>{% if huesped.residenciaTipo %} {{huesped.residenciaTipo.residencia}} {% endif %}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Residencia</label>
+                    <p>{{huesped.residencia}}</p>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Número</label>
+                    <p>{{huesped.numero}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>Código postal</label>
+                    <p>{{huesped.codigoPostal}}</p>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Fax</label>
+                    <p>{{huesped.fax}}</p>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Observación</label>
+                    <p>{{huesped.obs}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label>Fotografia</label>
+                    <p><img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="150px" width="auto"</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a href="{{ path('huesped_index') }}" class="btn btn-primary">Volver atras</a>
+                    <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}" class="btn btn-info">Editar</a>
+                    {{ form_start(delete_form, {'attr': {'style':'display:inline-block'} }) }}
+                        <input type="submit" value="Eliminar" class="btn btn-warning" onclick="return confirm('Realmente desea eliminar el registro?');">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

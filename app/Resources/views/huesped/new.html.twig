@@ -1,16 +1,153 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Huesped creation</h1>
+    <header class="content__title">
+        <h1>Crear Huesped</h1>
+        <div class="actions">
 
-    {{ form_start(form, { 'enctype':"multipart/form-data"}) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(form, { 'enctype':"multipart/form-data"}) }}
+            <h6>Datos personales</h6>
+            <hr>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    {{form_label(form.nombre)}}
+                    {{form_widget(form.nombre, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.apellidos)}}
+                    {{form_widget(form.apellidos, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.fechaNacimiento)}}
+                    {{form_widget(form.fechaNacimiento, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    {{form_label(form.generoTipo)}}
+                    {{form_widget(form.generoTipo, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.paisNacionalidad)}}
+                    {{form_widget(form.paisNacionalidad, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.fotografia)}}
+                    {{form_widget(form.fotografia, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    {{form_label(form.documentoTipo)}}
+                    {{form_widget(form.documentoTipo, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.documento)}}
+                    {{form_widget(form.documento, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.documentoExpiracion)}}
+                    {{form_widget(form.documentoExpiracion, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    {{form_label(form.telefono)}}
+                    {{form_widget(form.telefono, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-3">
+                    {{form_label(form.celular)}}
+                    {{form_widget(form.celular, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-3">
+                    {{form_label(form.telefonoReferencia)}}
+                    {{form_widget(form.telefonoReferencia, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-3">
+                    {{form_label(form.email)}}
+                    {{form_widget(form.email, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <h6>Datos referenciales</h6>
+            <hr>
 
-    <ul>
-        <li>
-            <a href="{{ path('huesped_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    {{form_label(form.pais)}}
+                    {{form_widget(form.pais, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.ciudad)}}
+                    {{form_widget(form.ciudad, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.region)}}
+                    {{form_widget(form.region, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    {{form_label(form.residenciaTipo)}}
+                    {{form_widget(form.residenciaTipo, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.residencia)}}
+                    {{form_widget(form.residencia, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-4">
+                    {{form_label(form.numero)}}
+                    {{form_widget(form.numero, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    {{form_label(form.codigoPostal)}}
+                    {{form_widget(form.codigoPostal, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-3">
+                    {{form_label(form.fax)}}
+                    {{form_widget(form.fax, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+                <div class="form-group col-sm-6">
+                    {{form_label(form.obs)}}
+                    {{form_widget(form.obs, {'attr':{ 'class':'form-control' }})}}
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success">  Registrar </button>
+                    <a href="{{ path('huesped_index') }}" class="btn btn-warning">Cancelar</a>
+                </div>
+            </div>
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

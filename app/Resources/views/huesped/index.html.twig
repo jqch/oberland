@@ -1,53 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Huespeds list</h1>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th></th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Fechanacimiento</th>
-                    <th>Documentoexpiracion</th>
-                    <th>Telefono</th>
-                    <th>Celular</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for huesped in huespeds %}
-                <tr>
-                    <td><a href="{{ path('huesped_show', { 'id': huesped.id }) }}">{{ huesped.id }}</a></td>
-                    <td><img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="70px" width="auto"></td>
-                    <td>{{ huesped.nombre }}</td>
-                    <td>{{ huesped.apellidos }}</td>
-                    <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-                    <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
-                    <td>{{ huesped.telefono }}</td>
-                    <td>{{ huesped.celular }}</td>
-                    <td>{{ huesped.email }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('huesped_show', { 'id': huesped.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <header class="content__title">
+        <h1>Lista de Huéspedes</h1>
+        <div class="actions">
+            <a href="{{ path('huesped_new') }}"> <span><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> <span>Crear un nuevo huesped</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <div class="table-responsive">
+                <table class="table" id="data-table">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th>Id</th>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Documento Expiracion</th>
+                            <th>Teléfono</th>
+                            <th>Celular</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for huesped in huespeds %}
+                        <tr>
+                            <td><a href="{{ path('huesped_show', { 'id': huesped.id }) }}">{{ huesped.id }}</a></td>
+                            <td>
+                                <img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="70px" width="auto" class="img-circle">
+                            </td>
+                            <td>{{ huesped.nombre }}</td>
+                            <td>{{ huesped.apellidos }}</td>
+                            <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ huesped.telefono }}</td>
+                            <td>{{ huesped.celular }}</td>
+                            <td>{{ huesped.email }}</td>
+                            <td>
+
+                                <a href="{{ path('huesped_show', { 'id': huesped.id }) }}"><span><i class="zmdi zmdi-eye zmdi-hc-fw"></i> <span>Ver</span></span></a>
+                                <a href="{{ path('huesped_edit', { 'id': huesped.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <ul>
-        <li>
-            <a href="{{ path('huesped_new') }}">Create a new huesped</a>
-        </li>
-    </ul>
 {% endblock %}

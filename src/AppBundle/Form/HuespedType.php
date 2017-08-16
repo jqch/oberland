@@ -38,7 +38,6 @@ class HuespedType extends AbstractType
             ->add('obs')
             ->add('documentoTipo')
             ->add('generoTipo')
-            ->add('paisNacimiento')
             ->add('paisNacionalidad')
             ->add('pais')
             ->add('residenciaTipo');

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="content__title">
+        <h1>Habitaciones</h1>
+        <div class="actions">
+            <a href="{{ path('huesped_new') }}"> <span><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> <span>Crear un nueva habitacion</span></span></a>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+            {% for h in habitaciones %}
+                <div class="col-xl-3 col-lg-3 col-sm-4 col-6">
+                    <div class="contacts__item">
+                        <h4>Hab.: {{h.habitacion.nroHabitacion}}</h4>
+                        {% if h.estado == 'Disponible' %}
+                            <a href="">
+                                <img src="{{asset('img/habitacion.png')}}" alt="" class="img-responsive" width="100%" height="auto">
+                            </a>
+                        {% else %}
+                            <img src="{{asset('img/habitacion.png')}}" alt="" class="img-responsive" width="100%" height="auto">
+                        {% endif %}
+                        <div class="contacts__info">
+                            <strong>{{h.habitacion.habitacionTipo.habitacionTipo}}</strong>
+                            <small>{{h.habitacion.precio}} Bs.</small>
+                        </div>
+
+                        <button class="contacts__btn">{{h.estado}}</button>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h5>Estado de habitaciones</h5>
+            Disponibles: {{contDisponibles}} <br>
+            Reservados: {{contReservados}} <br>
+            Ocupados: {{contOcupados}} <br>
+            Mantenimiento: {{contMantenimiento}}
+        </div>
+    </div>
+{% endblock %}

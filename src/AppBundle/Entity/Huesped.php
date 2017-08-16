@@ -166,16 +166,6 @@ class Huesped
      *
      * @ORM\ManyToOne(targetEntity="PaisTipo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pais_nacimiento_id", referencedColumnName="id")
-     * })
-     */
-    private $paisNacimiento;
-
-    /**
-     * @var \PaisTipo
-     *
-     * @ORM\ManyToOne(targetEntity="PaisTipo")
-     * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="pais_nacionalidad_id", referencedColumnName="id")
      * })
      */
@@ -669,30 +659,6 @@ class Huesped
     public function getGeneroTipo()
     {
         return $this->generoTipo;
-    }
-
-    /**
-     * Set paisNacimiento
-     *
-     * @param \AppBundle\Entity\PaisTipo $paisNacimiento
-     *
-     * @return Huesped
-     */
-    public function setPaisNacimiento(\AppBundle\Entity\PaisTipo $paisNacimiento = null)
-    {
-        $this->paisNacimiento = $paisNacimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get paisNacimiento
-     *
-     * @return \AppBundle\Entity\PaisTipo
-     */
-    public function getPaisNacimiento()
-    {
-        return $this->paisNacimiento;
     }
 
     /**

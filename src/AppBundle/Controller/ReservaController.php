@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Reserva;
+use AppBundle\Entity\ReservaServicio;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -62,6 +63,19 @@ class ReservaController extends Controller
             $em->persist($reserva);
             $em->flush();
 
+            // Registro de reserva_servicio
+            $newReservaServicio = new ReservaServicio();
+            $newReservaServicio->setReserva($em->getRepository('AppBundle:Reserva')->find($reserva->getId()));
+            $newReservaServicio->setServicioTipo($em->getRepository('AppBundle:ServicioTipo')->find(1));
+            $newReservaServicio->setUsuario();
+            $newReservaServicio->setFechaRegistro(new \DateTime('now'));
+            $newReservaServicio->setHoraRegistro(new \DateTime('now'));
+            $newReservaServicio->setMonto($reserva->getPrecioActual());
+            $newReservaServicio->setSaldo($reserva->getPrecioActual());
+            $em->persist($newReservaServicio);
+            $em->flush();
+
+
             return $this->redirectToRoute('reserva_show', array('id' => $reserva->getId()));
         }
 
@@ -100,6 +114,13 @@ class ReservaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            // Obtenemos el dato del monto en reserva_servicio
+            $reservaServicio = $em->getRepository('AppBundle:ReservaServicio')->findOneBy(array('reserva'=>$reserva->getId(),'servicioTipo'=>1));
+            $reservaServicio->setMonto($reserva->getPrecioActual());
+            $reservaServicio->setSaldo($reserva->getPrecioActual());
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('reserva_edit', array('id' => $reserva->getId()));
