@@ -1,41 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Residenciatipos list</h1>
+    <header class="content__title">
+        <h1>Tipos de residencia</h1>
+        <div class="actions">
+            <a href="{{ path('residenciatipo_new') }}"> <span><i class="zmdi zmdi-plus zmdi-hc-fw"></i> <span>Crear nuevo tipo de residencia</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Residencia</th>
+                        <th>Abrev</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for residenciaTipo in residenciaTipos %}
+                    <tr>
+                        <td><a href="{{ path('residenciatipo_show', { 'id': residenciaTipo.id }) }}">{{ residenciaTipo.id }}</a></td>
+                        <td>{{ residenciaTipo.residencia }}</td>
+                        <td>{{ residenciaTipo.abrev }}</td>
+                        <td>
+                            <a href="{{ path('residenciatipo_edit', { 'id': residenciaTipo.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Residencia</th>
-                <th>Abrev</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for residenciaTipo in residenciaTipos %}
-            <tr>
-                <td><a href="{{ path('residenciatipo_show', { 'id': residenciaTipo.id }) }}">{{ residenciaTipo.id }}</a></td>
-                <td>{{ residenciaTipo.residencia }}</td>
-                <td>{{ residenciaTipo.abrev }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('residenciatipo_show', { 'id': residenciaTipo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('residenciatipo_edit', { 'id': residenciaTipo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('residenciatipo_new') }}">Create a new residenciaTipo</a>
-        </li>
-    </ul>
 {% endblock %}

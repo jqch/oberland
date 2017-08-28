@@ -1,40 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Pisotipos list</h1>
-    <table class="table table-inverse">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Piso</th>
-                <th>Detalle</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for pisoTipo in pisoTipos %}
-            <tr>
-                <td><a href="{{ path('pisotipo_show', { 'id': pisoTipo.id }) }}">{{ pisoTipo.id }}</a></td>
-                <td>{{ pisoTipo.piso }}</td>
-                <td>{{ pisoTipo.detalle }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('pisotipo_show', { 'id': pisoTipo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('pisotipo_edit', { 'id': pisoTipo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('pisotipo_new') }}">Create a new pisoTipo</a>
-        </li>
-    </ul>
+    <header class="content__title">
+        <h1>Numeros de pisos</h1>
+        <div class="actions">
+            <a href="{{ path('pisotipo_new') }}"> <span><i class="zmdi zmdi-plus zmdi-hc-fw"></i> <span>Crear nuevo piso</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Piso</th>
+                        <th>Detalle</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for pisoTipo in pisoTipos %}
+                    <tr>
+                        <td><a href="{{ path('pisotipo_show', { 'id': pisoTipo.id }) }}">{{ pisoTipo.id }}</a></td>
+                        <td>{{ pisoTipo.piso }}</td>
+                        <td>{{ pisoTipo.detalle }}</td>
+                        <td>
+                            <a href="{{ path('pisotipo_edit', { 'id': pisoTipo.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -48,7 +48,8 @@ class PaisTipoController extends Controller
             $em->persist($paisTipo);
             $em->flush();
 
-            return $this->redirectToRoute('paistipo_new', array('id' => $paisTipo->getId()));
+            return $this->redirectToRoute('paistipo_index');
+            //return $this->redirectToRoute('paistipo_new', array('id' => $paisTipo->getId()));
         }
 
         return $this->render('paistipo/new.html.twig', array(

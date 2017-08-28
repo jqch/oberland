@@ -1,7 +1,15 @@
 {% if huesped is not null %}
-	<div class="row">
+	<div class="row" style="border:solid 1px #eeeeee; padding: 10px">
+		<div class="col-md-12">
+			<h6>Datos del huesped</h6>
+        	<hr>
+		</div>
 		<div class="col-md-6 text-center">
-			<img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia)}}" width="200px" height="auto">
+			{% if huesped.fotografia != "" %}
+				<img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia)}}" width="200px" height="auto">
+			{% else %}
+				<img src="{{asset('uploads/huesped-foto/sin-foto.jpg')}}" width="200px" height="auto">
+			{% endif %}
 		</div>
 		<div class="col-md-6">
 			<label>Documento</label>
@@ -10,7 +18,7 @@
 			<p><b>{{huesped.nombre}} {{huesped.apellidos}}</b></p>
 			<label>Teléfono/Celular</label>
 			<p><b>{{huesped.telefono}} / {{huesped.celular}}</b></p>
-			<button onclick="reservar({{huesped.id}});" class="btn btn-info">Programar reserva</button>
+			<button onclick="reservar({{huesped.id}});" class="btn">Programar reserva</button>
 		</div>
 
 	</div>

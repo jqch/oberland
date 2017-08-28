@@ -14,8 +14,8 @@
                 <div class="col-xl-3 col-lg-3 col-sm-4 col-6">
                     <div class="contacts__item">
                         <h4>Hab.: {{h.habitacion.nroHabitacion}}</h4>
-                        {% if h.estado == 'Disponible' %}
-                            <a href="">
+                        {% if h.idEstado != 103 %}
+                            <a href="{{path('administracion',{'idHabitacion':h.habitacion.id, 'idEstado':h.idEstado, 'idReserva': h.idReserva})}}">
                                 <img src="{{asset('img/habitacion.png')}}" alt="" class="img-responsive" width="100%" height="auto">
                             </a>
                         {% else %}

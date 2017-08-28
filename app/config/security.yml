@@ -17,7 +17,7 @@ security:
             form_login:
                 login_path: /login
                 check_path: /login_check
-                default_target_path: /habitacion
+                default_target_path: /principal
             logout:
                 path: /logout
                 target: /

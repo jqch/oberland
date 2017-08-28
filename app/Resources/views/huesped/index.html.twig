@@ -15,10 +15,10 @@
                         <tr>
                             <th>Id</th>
                             <th></th>
+                            <th>Documento</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Fecha Nacimiento</th>
-                            <th>Documento Expiracion</th>
                             <th>Teléfono</th>
                             <th>Celular</th>
                             <th>Email</th>
@@ -32,10 +32,10 @@
                             <td>
                                 <img src="{{asset('uploads/huesped-foto/' ~ huesped.fotografia )}}" height="70px" width="auto" class="img-circle">
                             </td>
+                            <td>{{ huesped.documento }}</td>
                             <td>{{ huesped.nombre }}</td>
                             <td>{{ huesped.apellidos }}</td>
                             <td>{% if huesped.fechaNacimiento %}{{ huesped.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-                            <td>{% if huesped.documentoExpiracion %}{{ huesped.documentoExpiracion|date('Y-m-d') }}{% endif %}</td>
                             <td>{{ huesped.telefono }}</td>
                             <td>{{ huesped.celular }}</td>
                             <td>{{ huesped.email }}</td>

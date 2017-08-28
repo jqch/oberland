@@ -1,16 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Habitacion creation</h1>
+    <header class="content__title">
+        <h1>Crear habitación</h1>
+        <div class="actions">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        </div>
+    </header>
 
-    <ul>
-        <li>
-            <a href="{{ path('habitacion_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        {{form_label(form.pisoTipo)}}
+                        {{form_widget(form.pisoTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(form.habitacionTipo)}}
+                        {{form_widget(form.habitacionTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(form.capacidad)}}
+                        {{form_widget(form.capacidad, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        {{form_label(form.precio)}}
+                        {{form_widget(form.precio, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(form.nroHabitacion)}}
+                        {{form_widget(form.nroHabitacion, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(form.estadoTipo)}}
+                        {{form_widget(form.estadoTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center">
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                        <a href="{{ path('habitacion_index') }}" class="btn btn-warning">Cancelar</a>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

@@ -1,41 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Paistipos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pais</th>
-                <th>Abrev</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for paisTipo in paisTipos %}
-            <tr>
-                <td><a href="{{ path('paistipo_show', { 'id': paisTipo.id }) }}">{{ paisTipo.id }}</a></td>
-                <td>{{ paisTipo.pais }}</td>
-                <td>{{ paisTipo.abrev }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('paistipo_show', { 'id': paisTipo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('paistipo_edit', { 'id': paisTipo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('paistipo_new') }}">Create a new paisTipo</a>
-        </li>
-    </ul>
+    <header class="content__title">
+        <h1>Paises</h1>
+        <div class="actions">
+            <a href="{{ path('paistipo_new') }}"> <span><i class="zmdi zmdi-file-plus zmdi-hc-fw"></i> <span>Crear pais</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Pais</th>
+                        <th>Abrev</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for paisTipo in paisTipos %}
+                    <tr>
+                        <td><a href="{{ path('paistipo_show', { 'id': paisTipo.id }) }}">{{ paisTipo.id }}</a></td>
+                        <td>{{ paisTipo.pais }}</td>
+                        <td>{{ paisTipo.abrev }}</td>
+                        <td>
+                            <a href="{{ path('paistipo_edit', { 'id': paisTipo.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

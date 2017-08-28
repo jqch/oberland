@@ -17,50 +17,51 @@
             height: 100%;
         }
     </style>
-    <h1>Habitacions list</h1>
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Tipo</th>
-                    <th>Capacidad</th>
-                    <th>Precio</th>
-                    <th>Piso</th>
-                    <th>Nrohabitacion</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for habitacion in habitacions %}
-                <tr>
-                    <td><a href="{{ path('habitacion_show', { 'id': habitacion.id }) }}">{{ habitacion.id }}</a></td>
-                    <td>{{ habitacion.habitacionTipo.habitacionTipo }}</td>
-                    <td>{{ habitacion.capacidad }}</td>
-                    <td>{{ habitacion.precio }} Bs.</td>
-                    <td>{{ habitacion.pisoTipo.detalle }}</td>
-                    <td>{{ habitacion.nroHabitacion }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('habitacion_show', { 'id': habitacion.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('habitacion_edit', { 'id': habitacion.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+
+    <header class="content__title">
+        <h1>Lista de habitaciones</h1>
+        <div class="actions">
+            <a href="{{ path('habitacion_new') }}"> <span><i class="zmdi zmdi-plus zmdi-hc-fw"></i> <span>Crear nueva habitación</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <div class="table-responsive">
+                <table class="table" id="data-table">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th>Id</th>
+                            <th>Tipo</th>
+                            <th>Capacidad</th>
+                            <th>Precio</th>
+                            <th>Piso</th>
+                            <th>Nro habitacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for habitacion in habitacions %}
+                        <tr>
+                            <td><a href="{{ path('habitacion_show', { 'id': habitacion.id }) }}">{{ habitacion.id }}</a></td>
+                            <td>{{ habitacion.habitacionTipo.habitacionTipo }}</td>
+                            <td>{{ habitacion.capacidad }}</td>
+                            <td>{{ habitacion.precio }} Bs.</td>
+                            <td>{{ habitacion.pisoTipo.detalle }}</td>
+                            <td>{{ habitacion.nroHabitacion }}</td>
+                            <td>
+                                <a href="{{ path('habitacion_show', { 'id': habitacion.id }) }}"><span><i class="zmdi zmdi-eye zmdi-hc-fw"></i> <span>Ver</span></span></a>
+                                <a href="{{ path('habitacion_edit', { 'id': habitacion.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('habitacion_new') }}">Create a new habitacion</a>
-        </li>
-    </ul>
+
+
     <!--div class="embed-container">
         <object type="text/html" data="{{path('reserva_new')}}">
 

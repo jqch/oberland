@@ -48,7 +48,8 @@ class PisoTipoController extends Controller
             $em->persist($pisoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('pisotipo_show', array('id' => $pisoTipo->getId()));
+            return $this->redirectToRoute('pisotipo_index');
+            //return $this->redirectToRoute('pisotipo_show', array('id' => $pisoTipo->getId()));
         }
 
         return $this->render('pisotipo/new.html.twig', array(

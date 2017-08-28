@@ -1,45 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Pagos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pago</th>
-                <th>Fecharegistro</th>
-                <th>Horaregistro</th>
-                <th>Obs</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for pago in pagos %}
-            <tr>
-                <td><a href="{{ path('pago_show', { 'id': pago.id }) }}">{{ pago.id }}</a></td>
-                <td>{{ pago.pago }}</td>
-                <td>{% if pago.fechaRegistro %}{{ pago.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if pago.horaRegistro %}{{ pago.horaRegistro|date('H:i:s') }}{% endif %}</td>
-                <td>{{ pago.obs }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('pago_show', { 'id': pago.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('pago_edit', { 'id': pago.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('pago_new') }}">Create a new pago</a>
-        </li>
-    </ul>
+    <header class="content__title">
+        <h1>Lista de Pagos</h1>
+        <div class="actions">
+            <a href="{{ path('pago_new') }}"> <span><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> <span>Registrar pago</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Pago</th>
+                        <th>Fecharegistro</th>
+                        <th>Horaregistro</th>
+                        <th>Obs</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for pago in pagos %}
+                    <tr>
+                        <td><a href="{{ path('pago_show', { 'id': pago.id }) }}">{{ pago.id }}</a></td>
+                        <td>{{ pago.pago }}</td>
+                        <td>{% if pago.fechaRegistro %}{{ pago.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+                        <td>{% if pago.horaRegistro %}{{ pago.horaRegistro|date('H:i:s') }}{% endif %}</td>
+                        <td>{{ pago.obs }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('pago_show', { 'id': pago.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('pago_edit', { 'id': pago.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -1,39 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Documentotipos list</h1>
+    <header class="content__title">
+        <h1>Tipos de documentos</h1>
+        <div class="actions">
+            <a href="{{ path('documentotipo_new') }}"> <span><i class="zmdi zmdi-plus zmdi-hc-fw"></i> <span>Crear nuevo tipo de documento</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Documento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for documentoTipo in documentoTipos %}
+                    <tr>
+                        <td><a href="{{ path('documentotipo_show', { 'id': documentoTipo.id }) }}">{{ documentoTipo.id }}</a></td>
+                        <td>{{ documentoTipo.documento }}</td>
+                        <td>
+                            <a href="{{ path('documentotipo_edit', { 'id': documentoTipo.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Documento</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for documentoTipo in documentoTipos %}
-            <tr>
-                <td><a href="{{ path('documentotipo_show', { 'id': documentoTipo.id }) }}">{{ documentoTipo.id }}</a></td>
-                <td>{{ documentoTipo.documento }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('documentotipo_show', { 'id': documentoTipo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('documentotipo_edit', { 'id': documentoTipo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('documentotipo_new') }}">Create a new documentoTipo</a>
-        </li>
-    </ul>
 {% endblock %}

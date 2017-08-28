@@ -1,39 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Estadotipos list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Estado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for estadoTipo in estadoTipos %}
-            <tr>
-                <td><a href="{{ path('estadotipo_show', { 'id': estadoTipo.id }) }}">{{ estadoTipo.id }}</a></td>
-                <td>{{ estadoTipo.estado }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('estadotipo_show', { 'id': estadoTipo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('estadotipo_edit', { 'id': estadoTipo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('estadotipo_new') }}">Create a new estadoTipo</a>
-        </li>
-    </ul>
+    <header class="content__title">
+        <h1>Estados</h1>
+        <div class="actions">
+            <a href="{{ path('estadotipo_new') }}"> <span><i class="zmdi zmdi-plus zmdi-hc-fw"></i> <span>Crear nuevo estado</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table" id="data-table">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Id</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for estadoTipo in estadoTipos %}
+                    <tr>
+                        <td><a href="{{ path('estadotipo_show', { 'id': estadoTipo.id }) }}">{{ estadoTipo.id }}</a></td>
+                        <td>{{ estadoTipo.estado }}</td>
+                        <td>
+                            <a href="{{ path('estadotipo_edit', { 'id': estadoTipo.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

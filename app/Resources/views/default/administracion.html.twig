@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="content__title">
+        <h1>Administracion</h1>
+        <div class="actions">
+
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <table class="table">
+                <td width="100px">
+                    <img src="{{asset('img/habitacion.png')}}" alt="" class="img-responsive" width="100%" height="auto">
+                </td>
+                <td>
+                    <h1>Hab.: {{habitacion.nroHabitacion}}</h1>
+                    <h4>Estado: {{estado}}</h4>
+                </td>
+            </table>
+        </div>
+    </div>
+    {# DISPONIBLE #}
+    {% if idEstado == 100 %}
+        <div class="row">
+            <div class="col-md-12 alert alert-info">
+                Para realizar una reserva, vaya a la opcion de reservas.
+            </div>
+        </div>
+    {% endif %}
+
+    {# OCUPADO #}
+    {% if idEstado == 101 %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Datos del huesped</div>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-condensed table-bordered">
+                            <tr>
+                                <th>Documento</th><td>{{reserva.huesped.documento}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre</th><td>{{reserva.huesped.nombre}} {{reserva.huesped.apellidos}}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha de Ingreso/Salida</th><td>{{reserva.fechaIngreso|date('d-m-Y')}} al {{reserva.fechaSalida|date('d-m-Y')}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Servicios obtenidos (cuentas por pagar)</div>
+                    </div>
+                    <div class="card-block">
+                        <table class="table">
+                            <thead class="table-inverse">
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Monto</th>
+                                    <th>Saldo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% set totalMonto = 0 %}
+                                {% set totalSaldo = 0 %}
+                                {% for s in servicios %}
+                                    <tr>
+                                        <td>{{s.servicioTipo.servicio}}</td>
+                                        <td>{{s.monto}}</td>
+                                        <td>{{s.saldo}}</td>
+                                        <td>
+                                            <a href="" style="color:#57D909"> <i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Pagar</a>
+                                        </td>
+                                    </tr>
+                                    {% set totalMonto = totalMonto + s.monto %}
+                                    {% set totalSaldo = totalSaldo + s.saldo %}
+                                {% endfor %}
+                                <tr style="font-size: 1.3em">
+                                    <th>TOTALES</th>
+                                    <th>{{totalMonto|number_format(2)}}</th>
+                                    <th>{{totalSaldo|number_format(2)}}</th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {# RESERVADO #}
+    {% if idEstado == 102 %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Datos del huesped</div>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-condensed table-bordered">
+                            <tr>
+                                <th>Documento</th><td>{{reserva.huesped.documento}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre</th><td>{{reserva.huesped.nombre}} {{reserva.huesped.apellidos}}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha de Ingreso/Salida</th><td>{{reserva.fechaIngreso|date('d-m-Y')}} al {{reserva.fechaSalida|date('d-m-Y')}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Confirmar o anular la reserva</div>
+                    </div>
+                    <div class="card-block">
+                        <form action="{{path('cambiarEstado')}}" method="post" style="display: inline-block">
+                            <input type="hidden" name="idReserva" value="{{reserva.id}}">
+                            <input type="hidden" name="nuevoEstado" value="1">
+                            <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+                        </form>
+
+                        <form action="{{path('cambiarEstado')}}" method="post" style="display: inline-block">
+                            <input type="hidden" name="idReserva" value="{{reserva.id}}">
+                            <input type="hidden" name="nuevoEstado" value="3">
+                            <button type="submit" class="btn btn-warning">Anular reserva</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {# MANTENIMIENTO #}
+    {% if idEstado == 103 %}
+        <div class="alert alert-info">
+            La habitación esta en mantenimiento, no se pueden realizar reservas ni ocupaciones.
+        </div>
+    {% endif %}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript">
+        var pagar = function(){
+
+        }
+    </script>
+{% endblock %}

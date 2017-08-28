@@ -1,16 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Serviciotipo creation</h1>
+    <header class="content__title">
+        <h1>Crear servicio</h1>
+        <div class="actions">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('serviciotipo_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{form_label(form.servicio)}}
+                        {{form_widget(form.servicio, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="col-md-6">
+                        {{form_label(form.precio)}}
+                        {{form_widget(form.precio, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                {{ form_widget(form) }}
+                <br>
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a href="{{ path('serviciotipo_index') }}" class="btn btn-warning">Cancelar</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

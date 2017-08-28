@@ -1,21 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Residenciatipo edit</h1>
+    <header class="content__title">
+        <h1>Editar tipo de residencia</h1>
+        <div class="actions">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('residenciatipo_index') }}">Back to the list</a>
-        </li>
-        <li>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{form_label(edit_form.residencia)}}
+                        {{form_widget(edit_form.residencia, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="col-md-6">
+                        {{form_label(edit_form.abrev)}}
+                        {{form_widget(edit_form.abrev, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                {{ form_widget(edit_form) }}
+                <br>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <a href="{{ path('residenciatipo_index') }}" class="btn btn-warning">Cancelar</a>
+            {{ form_end(edit_form) }}
+            <br>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
+
 {% endblock %}

@@ -118,11 +118,14 @@ class ReservaController extends Controller
             $em = $this->getDoctrine()->getManager();
             // Obtenemos el dato del monto en reserva_servicio
             $reservaServicio = $em->getRepository('AppBundle:ReservaServicio')->findOneBy(array('reserva'=>$reserva->getId(),'servicioTipo'=>1));
-            $reservaServicio->setMonto($reserva->getPrecioActual());
-            $reservaServicio->setSaldo($reserva->getPrecioActual());
+            if($reservaServicio){
+                $reservaServicio->setMonto($reserva->getPrecioActual());
+                $reservaServicio->setSaldo($reserva->getPrecioActual());
+            }
 
             $this->getDoctrine()->getManager()->flush();
 
+            return $this->redirectToRoute('reserva_index');
             return $this->redirectToRoute('reserva_edit', array('id' => $reserva->getId()));
         }
 

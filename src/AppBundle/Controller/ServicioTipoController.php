@@ -48,7 +48,8 @@ class ServicioTipoController extends Controller
             $em->persist($servicioTipo);
             $em->flush();
 
-            return $this->redirectToRoute('serviciotipo_show', array('id' => $servicioTipo->getId()));
+            return $this->redirectToRoute('serviciotipo_index');
+            //return $this->redirectToRoute('serviciotipo_show', array('id' => $servicioTipo->getId()));
         }
 
         return $this->render('serviciotipo/new.html.twig', array(

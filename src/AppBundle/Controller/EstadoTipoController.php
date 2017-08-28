@@ -48,7 +48,8 @@ class EstadoTipoController extends Controller
             $em->persist($estadoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('estadotipo_show', array('id' => $estadoTipo->getId()));
+            return $this->redirectToRoute('estadotipo_index');
+            //return $this->redirectToRoute('estadotipo_show', array('id' => $estadoTipo->getId()));
         }
 
         return $this->render('estadotipo/new.html.twig', array(

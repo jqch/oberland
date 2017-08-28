@@ -48,7 +48,8 @@ class ResidenciaTipoController extends Controller
             $em->persist($residenciaTipo);
             $em->flush();
 
-            return $this->redirectToRoute('residenciatipo_show', array('id' => $residenciaTipo->getId()));
+            return $this->redirectToRoute('residenciatipo_index');
+            //return $this->redirectToRoute('residenciatipo_show', array('id' => $residenciaTipo->getId()));
         }
 
         return $this->render('residenciatipo/new.html.twig', array(

@@ -1,51 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservas list</h1>
+    <header class="content__title">
+        <h1>Lista de Reservas</h1>
+        <div class="actions">
+            <a href="{{ path('reserva_new') }}"> <span><i class="zmdi zmdi-file-plus zmdi-hc-fw"></i> <span>Crear nueva reserva</span></span></a>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            <div class="table-responsive">
+                <table class="table" id="data-table">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th>Id</th>
+                            <th>Estado</th>
+                            <th>Huesped</th>
+                            <th>Fecha Ingreso</th>
+                            <th>Fecha Salida</th>
+                            <th>Horario entrada estimado</th>
+                            <th>Habitacion</th>
+                            <th>Precio Actual</th>
+                            <th>__Acciones__</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for reserva in reservas %}
+                        <tr>
+                            <td><a href="{{ path('reserva_show', { 'id': reserva.id }) }}">{{ reserva.id }}</a></td>
+                            <td>
+                                <label class="label-green">{{reserva.reservaEstadoTipo.reservaEstadoTipo}}</label>
+                            </td>
+                            <td>{{ reserva.huesped.nombre }} {{ reserva.huesped.apellidos }}</td>
+                            <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
+                            <td>{{ reserva.habitacion.nroHabitacion }}</td>
+                            <td>{{ reserva.precioActual }}</td>
+                            <td>
+                                <a href="{{ path('reserva_show', { 'id': reserva.id }) }}"><span><i class="zmdi zmdi-eye zmdi-hc-fw"></i> <span>Ver</span></span></a><br>
+                                <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}"><span class="text-warning"><i class="zmdi zmdi-edit zmdi-hc-fw"></i> <span>Editar</span></span></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fechaingreso</th>
-                <th>Fechasalida</th>
-                <th>Horarioentradaestimado</th>
-                <th>Fecharegistro</th>
-                <th>Horaregistro</th>
-                <th>Obs</th>
-                <th>Precioactual</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reserva in reservas %}
-            <tr>
-                <td><a href="{{ path('reserva_show', { 'id': reserva.id }) }}">{{ reserva.id }}</a></td>
-                <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
-                <td>{% if reserva.fechaRegistro %}{{ reserva.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if reserva.horaRegistro %}{{ reserva.horaRegistro|date('H:i:s') }}{% endif %}</td>
-                <td>{{ reserva.obs }}</td>
-                <td>{{ reserva.precioActual }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('reserva_show', { 'id': reserva.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('reserva_new') }}">Create a new reserva</a>
-        </li>
-    </ul>
 {% endblock %}

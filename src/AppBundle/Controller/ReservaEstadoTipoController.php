@@ -48,7 +48,8 @@ class ReservaEstadoTipoController extends Controller
             $em->persist($reservaEstadoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('reservaestadotipo_show', array('id' => $reservaEstadoTipo->getId()));
+            return $this->redirectToRoute('reservaestadotipo_index');
+            //return $this->redirectToRoute('reservaestadotipo_show', array('id' => $reservaEstadoTipo->getId()));
         }
 
         return $this->render('reservaestadotipo/new.html.twig', array(

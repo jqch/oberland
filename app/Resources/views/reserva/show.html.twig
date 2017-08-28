@@ -1,56 +1,65 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reserva</h1>
+    <header class="content__title">
+        <h1>Datos Reserva</h1>
+        <div class="actions">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reserva.id }}</td>
-            </tr>
-            <tr>
-                <th>Fechaingreso</th>
-                <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Fechasalida</th>
-                <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Horarioentradaestimado</th>
-                <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Fecharegistro</th>
-                <td>{% if reserva.fechaRegistro %}{{ reserva.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Horaregistro</th>
-                <td>{% if reserva.horaRegistro %}{{ reserva.horaRegistro|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Obs</th>
-                <td>{{ reserva.obs }}</td>
-            </tr>
-            <tr>
-                <th>Precioactual</th>
-                <td>{{ reserva.precioActual }}</td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+    </header>
 
-    <ul>
-        <li>
-            <a href="{{ path('reserva_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ reserva.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Huesped</th>
+                                <td>{{ reserva.huesped.nombre }} {{ reserva.huesped.apellidos }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha Ingreso</th>
+                                <td>{% if reserva.fechaIngreso %}{{ reserva.fechaIngreso|date('Y-m-d') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha Salida</th>
+                                <td>{% if reserva.fechaSalida %}{{ reserva.fechaSalida|date('Y-m-d') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Horario entrada estimado</th>
+                                <td>{% if reserva.horarioEntradaEstimado %}{{ reserva.horarioEntradaEstimado|date('H:i:s') }}{% endif %}</td>
+                            </tr>
+                            <tr>
+                                <th>Habitacion</th>
+                                <td>{{ reserva.habitacion.nroHabitacion }}</td>
+                            </tr>
+                            <tr>
+                                <th>Precioactual</th>
+                                <td>{{ reserva.precioActual }}</td>
+                            </tr>
+                            <tr>
+                                <th>Obs</th>
+                                <td>{{ reserva.obs }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="text-align: center">
+                    <a href="{{ path('reserva_index') }}" class="btn btn-info">Volver atras</a>
+                    <a href="{{ path('reserva_edit', { 'id': reserva.id }) }}" class="btn btn-primary">Editar</a>
+                    {{ form_start(delete_form, {'attr':{'style':'display:inline-block'} }) }}
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

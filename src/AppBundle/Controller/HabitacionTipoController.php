@@ -48,7 +48,8 @@ class HabitacionTipoController extends Controller
             $em->persist($habitacionTipo);
             $em->flush();
 
-            return $this->redirectToRoute('habitaciontipo_show', array('id' => $habitacionTipo->getId()));
+            return $this->redirectToRoute('habitaciontipo_index');
+            //return $this->redirectToRoute('habitaciontipo_show', array('id' => $habitacionTipo->getId()));
         }
 
         return $this->render('habitaciontipo/new.html.twig', array(

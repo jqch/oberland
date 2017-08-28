@@ -48,7 +48,8 @@ class DocumentoTipoController extends Controller
             $em->persist($documentoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('documentotipo_show', array('id' => $documentoTipo->getId()));
+            return $this->redirectToRoute('documentotipo_index');
+            //return $this->redirectToRoute('documentotipo_show', array('id' => $documentoTipo->getId()));
         }
 
         return $this->render('documentotipo/new.html.twig', array(

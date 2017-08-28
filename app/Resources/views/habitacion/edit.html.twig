@@ -1,21 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Habitacion edit</h1>
+    <header class="content__title">
+        <h1>Editar habitación</h1>
+        <div class="actions">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        </div>
+    </header>
 
-    <ul>
-        <li>
-            <a href="{{ path('habitacion_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.pisoTipo)}}
+                        {{form_widget(edit_form.pisoTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.habitacionTipo)}}
+                        {{form_widget(edit_form.habitacionTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.capacidad)}}
+                        {{form_widget(edit_form.capacidad, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.precio)}}
+                        {{form_widget(edit_form.precio, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.nroHabitacion)}}
+                        {{form_widget(edit_form.nroHabitacion, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{form_label(edit_form.estadoTipo)}}
+                        {{form_widget(edit_form.estadoTipo, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center">
+                        <button type="submit" class="btn btn-success">Guardar cambios</button>
+                        <a href="{{ path('habitacion_index') }}" class="btn btn-warning">Cancelar</a>
+                    </div>
+                </div>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 {% endblock %}

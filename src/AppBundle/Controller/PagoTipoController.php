@@ -48,7 +48,8 @@ class PagoTipoController extends Controller
             $em->persist($pagoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('pagotipo_show', array('id' => $pagoTipo->getId()));
+            return $this->redirectToRoute('pagotipo_index');
+            //return $this->redirectToRoute('pagotipo_show', array('id' => $pagoTipo->getId()));
         }
 
         return $this->render('pagotipo/new.html.twig', array(

@@ -1,21 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Generotipo edit</h1>
+    <header class="content__title">
+        <h1>Editar género</h1>
+        <div class="actions">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('generotipo_index') }}">Back to the list</a>
-        </li>
-        <li>
+        </div>
+    </header>
+    <div class="card">
+        <div class="card-block">
+            {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{form_label(edit_form.genero)}}
+                        {{form_widget(edit_form.genero, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                    <div class="col-md-6">
+                        {{form_label(edit_form.detalle)}}
+                        {{form_widget(edit_form.detalle, {'attr':{'class':'form-control'} })}}
+                        <i class="form-group__bar"></i>
+                    </div>
+                </div>
+                {{ form_widget(edit_form) }}
+                <br>
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a href="{{ path('generotipo_index') }}" class="btn btn-warning">Cancelar</a>
+            {{ form_end(edit_form) }}
+            <br>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
+
 {% endblock %}

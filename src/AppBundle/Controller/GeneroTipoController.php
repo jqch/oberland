@@ -48,7 +48,8 @@ class GeneroTipoController extends Controller
             $em->persist($generoTipo);
             $em->flush();
 
-            return $this->redirectToRoute('generotipo_show', array('id' => $generoTipo->getId()));
+            return $this->redirectToRoute('generotipo_index');
+            //return $this->redirectToRoute('generotipo_show', array('id' => $generoTipo->getId()));
         }
 
         return $this->render('generotipo/new.html.twig', array(
